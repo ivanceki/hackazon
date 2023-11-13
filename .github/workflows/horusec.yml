@@ -25,10 +25,10 @@ jobs:
 
       - name: Save Report to Text File
         run: |
-          cat /reports/report.json > /reports/horusec_report.txt
+          more ./reports/report.json
 
       - name: Upload Report
         uses: actions/upload-artifact@v2
         with:
           name: horusec-report
-          path: /reports/horusec_report.txt
+          path: ./reports/report.json
