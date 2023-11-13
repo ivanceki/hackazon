@@ -23,6 +23,7 @@ jobs:
       - name: Save Report to Text File
         run: |
           more report.json
+          cp report.json ./reports/report.json
 
       - name: Upload Report
         uses: actions/upload-artifact@v2
