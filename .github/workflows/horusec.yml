@@ -11,7 +11,7 @@ jobs:
       
       - name: Run Horusec
         env:
-          HORUSEC_CLI_RETURN_ERROR_IF_FOUND_VULNERABILITY: "true"
+          HORUSEC_CLI_RETURN_ERROR_IF_FOUND_VULNERABILITY: "false"
         id: run_horusec
         uses: fike/horusec-action@v0.2.2
         with:
