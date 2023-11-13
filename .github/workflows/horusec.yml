@@ -15,18 +15,18 @@ jobs:
         id: run_horusec
         uses: fike/horusec-action@v0.2.2
         with:
-          arguments: -p ./ --config-file-path=horusec-config.json -o="json" -O="./report.json" --return-error=false
+          arguments: -p ./ --config-file-path=horusec-config.json -o="text" -O="./report.txt" --return-error=false
 
       - name: Create Reports Directory
         run: mkdir -p ./reports
       
       - name: Save Report to Text File
         run: |
-          more report.json
-          cp report.json ./reports/report.json
+          more report.txt
+          cp report.txt ./reports/report.txt
 
       - name: Upload Report
         uses: actions/upload-artifact@v2
         with:
           name: horusec-report
-          path: ./reports/report.json
+          path: ./reports/report.txt
