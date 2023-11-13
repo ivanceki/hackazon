@@ -9,9 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Run Horusec
-        env:
-          HORUSEC_CLI_RETURN_ERROR_IF_FOUND_VULNERABILITY: "false"
+      - name: Run Horusec          
         id: run_horusec
         uses: fike/horusec-action@v0.2.2
         with:
@@ -20,13 +18,12 @@ jobs:
       - name: Create Reports Directory
         run: mkdir -p ./reports
       
-      - name: Save Report to Text File
+      - name: Display report
         run: |
-          more report.txt
-          cp report.txt ./reports/report.txt
+          more ./report.txt
 
       - name: Upload Report
         uses: actions/upload-artifact@v2
         with:
           name: horusec-report
-          path: ./reports/report.txt
+          path: ./report.txt
