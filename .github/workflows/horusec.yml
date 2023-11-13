@@ -9,9 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Create Reports Directory
-        run: mkdir -p reports
-      
       - name: Run Horusec
         env:
           HORUSEC_CLI_RETURN_ERROR_IF_FOUND_VULNERABILITY: "false"
@@ -20,6 +17,9 @@ jobs:
         with:
           arguments: -p ./ --config-file-path=horusec-config.json -O .reports/report.json --return-error=false
 
+      - name: Create Reports Directory
+        run: mkdir -p reports
+      
       - name: Save Report to Text File
         run: |
           more ./reports/report.json
